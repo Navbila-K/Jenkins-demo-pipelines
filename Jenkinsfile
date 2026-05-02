@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                git branch: 'main', url: 'https://github.com/Venkiemc/Jenkins-demo-pipelines.git'
+                git branch: 'main', url: 'https://github.com/Navbila-K/Jenkins-demo-pipelines.git'
             }
         }
 
