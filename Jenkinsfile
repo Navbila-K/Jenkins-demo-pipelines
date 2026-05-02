@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven "maven3.9.9"
-        jdk "JDK21"
+        maven 'maven3.9.9'
+        jdk 'JDK21'
     }
 
     stages {
@@ -15,20 +15,20 @@ pipeline {
 
         stage('Build and Unit Test') {
             steps {
-                bat 'mvn clean package'  // This will generate the JAR and run tests
+                sh 'mvn clean package'
             }
         }
 
         stage('Checkstyle Analysis') {
             steps {
-                bat 'mvn checkstyle:checkstyle'
+                sh 'mvn checkstyle:checkstyle'
             }
         }
 
         stage('Archive Artifacts') {
             steps {
                 echo 'Now Archiving it...'
-                archiveArtifacts artifacts: '**/target/*.jar'  // Archives the JAR file
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }
     }
